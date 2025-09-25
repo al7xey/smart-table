@@ -8,7 +8,7 @@ import {processFormData} from "./lib/utils.js";
 
 import {initTable} from "./components/table.js";
 import {initPagination} from "./components/pagination.js";
-import {initSearching} from "./components/search.js"; // Добавляем импорт модуля поиска
+import {initSearching} from "./components/searching.js"; 
 
 // Исходные данные используемые в render()
 const {data, ...indexes} = initData(sourceData);
