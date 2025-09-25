@@ -19,9 +19,21 @@ export function initFiltering(elements, indexes) {
      })
     return (data, state, action) => {
         // @todo: #4.2 — обработать очистку поля
-
+        if (action && action.type === 'clear') {
+            const field = action.field;
+            
+            const parent = action.element.closest('.filter-item, .filter-group, [data-field-container]') || action.element.parentElement;
+            const input = parent.querySelector('input[type="text"], input[type="search"], input[type="number"], select');
+            
+            if (input) {
+                input.value = '';
+                
+                if (state.filters && state.filters[field] !== undefined) {
+                    state.filters[field] = '';
+                }
+            }
+        }
         // @todo: #4.5 — отфильтровать данные используя компаратор
         return data.filter(row => compare(row, state));
-        return data;
     }
 }
